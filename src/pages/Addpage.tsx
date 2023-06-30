@@ -35,7 +35,7 @@ export default function addpage() {
               <Card.Body>
                 <Grid.Container gap={1.5}>
                   <Grid>
-                    <Input clearable bordered fullWidth
+                    <Input clearable bordered width="205px"
                       color="default" 
                       label="Service Name" 
                       placeholder="Service Name"
@@ -44,7 +44,7 @@ export default function addpage() {
                   </Grid>
                 
                   <Grid>
-                    <Input clearable bordered fullWidth
+                    <Input clearable bordered width="205px"
                       color="default"
                       label="Service Link"
                       placeholder="Service Link"
@@ -53,11 +53,11 @@ export default function addpage() {
                   </Grid>
                 
                   <Grid>
-                    <Input clearable bordered fullWidth
+                    <Input clearable bordered width="430px"
                       color="default"
                       label="Service Image"
                       placeholder="upload Service Image"
-                      type="file" accept='image/*'
+                      type="file" accept='image/*' css={{display : "flex" , justifyContent : "center"}}
                     />
                   </Grid>
 
