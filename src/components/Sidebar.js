@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import { Avatar } from '@nextui-org/react';
-import { CiViewList, CiUser} from "react-icons/ci";
+import { Avatar, Container, Text} from '@nextui-org/react';
+import { FiLogOut,FiUsers,FiList } from "react-icons/fi";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import Link from "next/link";
 import { useContext } from "react";
@@ -10,14 +10,14 @@ import { useRouter } from "next/router";
 
 const sidebarItems = [
   {
-    name: "ServiceManagement",
+    name: "Service Management",
     href: "\serviceManage",
-    icon: CiViewList,
+    icon: FiList,
   },
   {
-    name: "StaffManagement",
+    name: "Staff Management",
     href: "\staffManage",
-    icon: CiUser,
+    icon: FiUsers,
   },
 ];
 
@@ -41,20 +41,20 @@ const Sidebar = () => {
           />
           <ul>
           <p className="sidebar__logo-name">KMUTNB</p>
-          <p className="sidebar__sublogo-name">Information Service Personalized <br/>
+          <p className="sidebar__sublogo-name">Information Service Personalized <br/> 
           Portal Management System</p></ul>
         </div>
-        <ul className="sidebar__list">
-          <li className="sidebar__item"> 
-            <Avatar
-              size= "xl"
-              color= "warning"
-              src="https://i.pinimg.com/736x/41/7a/bf/417abf01ebae2804314ed36c05d3379c.jpg"
-              bordered
-            />
-            <p>testtt</p>
-          </li>
-        </ul>
+
+        <Container css={{display:"flex", justifyContent:"center", alignItems:"center", marginTop:"1.5rem"}}>
+          <Avatar size={"lg"} 
+                  color={"warning"}
+                  src="https://i.pinimg.com/736x/41/7a/bf/417abf01ebae2804314ed36c05d3379c.jpg"
+          />           
+        </Container>
+        <Container css={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+          <Text size={17} css={{marginTop:"1rem", marginBottom:"2rem"}}>Admin name</Text>
+        </Container>
+        
         <ul className="sidebar__list">
           {sidebarItems.map(({ name, href, icon: Icon }) => {
             return (
@@ -74,6 +74,16 @@ const Sidebar = () => {
             );
           })}
         </ul>
+
+        <div className="sidebar__bottom" />
+          <ul className="sidebar__list">
+            <li className="sidebar_item">
+              <Link className="sidebar__link" href={"https://nextui.org/"}> 
+              <span className="sidebar__icon"><FiLogOut/></span>
+              <span className="sidebar__name">Log out</span></Link>
+            </li>
+          </ul>
+        
       </aside>
     </div>
   );
