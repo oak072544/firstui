@@ -3,13 +3,13 @@ import BaseLayout from "@/components/BaseLayout";
 import { StyledBadge } from "@/components/StyledBadge";
 import { Button, Grid, Text, Row, Spacer, Popover, Image, Card, Link, Container, Col, Input, Tooltip} from "@nextui-org/react";
 import { FiPlusCircle, FiSearch, FiSliders, FiEdit, FiEye, FiTrash2} from "react-icons/fi";
-//import { DeleteService } from "./DeleteService..js"
+//import { DeleteService } from "./DeleteService..js" อันนี้คือไฟล์เด้งเตือนเวลาจะลบ แต่ตอนนี้แตกเพราะมันใส่คำสั่งซ้อนกันไม่ได้ ? 
 
 
 
 export default function serviceManage() {
 
-    const list = [
+    const list = [ //กำหนดข้อมูลของบริการ 
         {
           servicename: "Service",
           img: "https://avatars.githubusercontent.com/u/86160567?s=200&v=4",
@@ -42,28 +42,34 @@ export default function serviceManage() {
 
     return (
         <>
-        <Head>
+        {/*ชื่อ tab*/}
+        <Head> 
             <title> Services Management</title>
         </Head>
         
-        <BaseLayout>
+        <BaseLayout> {/*เรียก layout มาใช้*/}
 
           <Container fluid css={{marginTop:"1rem"}}>
             <Card css={{ $$cardColor: "#FFE9E5"}} variant="flat">
               <Card.Body>
                 <Container css={{display:"flex", marginTop:"1rem", marginBottom:"1rem"}}>
                   <Row>
+                    {/*ชื่อหน้า*/}
                     <Row><Text h3 css={{justifyContent:"flex-start", alignContent:"flex-start"}}>Service Management</Text></Row>
                     <Row css={{justifyContent:"flex-end", alignContent:"flex-end"}}>
+                      {/*ปุ่ม add service*/}
                       <Button icon={<FiPlusCircle/>} bordered color={"warning"} size={"sm"}>Add Service</Button>
+                      {/*ช่อง search*/}
                       <Input placeholder="Search" css={{marginLeft:"0.5rem"}}
                               size="sm" bordered color="warning" contentRight={<FiSearch/>}/>
                     </Row>
                   </Row>
                 </Container>
+                {/*ปุ่ม sort*/}
                 <Container css={{display:"flex", justifyContent:"flex-end", alignContent:"flex-end"}}>
                   <Text size={12}>Short by : Name <FiSliders/></Text>
                 </Container>
+                {/*ดึงข้อมูลของ service แต่ละตัวมาใส่ใน card ของแต่ละบริการ*/}
                 <Grid.Container gap={2} justify="flex-start">
                   {list.map((item, index) => (
                     <Grid xs={6}>
@@ -83,7 +89,7 @@ export default function serviceManage() {
                                 <Row style={{marginBottom:"1rem"}}>
                                   <Row>
                                     <p className="text-md">{item.servicename}</p>
-                                    <StyledBadge type={item.role} style={{marginLeft:"0.5rem"}}>
+                                    <StyledBadge type={item.role} style={{marginLeft:"0.5rem"}}> {/*ตรงนี้ไม่แน่ใจว่า type มันแตกเพราะอะไร แต่รันได้ปกติ*/}
                                       {item.role}
                                     </StyledBadge>
                                   </Row>

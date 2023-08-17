@@ -1,4 +1,5 @@
 import { styled } from '@nextui-org/react';
+//file นี้คือไฟล์ปุ่ม Badge ที่ custom ไว้เรียกใช้ จะมี Role 6 อัน + Admin,Staff
 
 export const StyledBadge = styled('span', {
   display: 'inline-block',

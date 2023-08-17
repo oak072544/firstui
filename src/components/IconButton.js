@@ -1,6 +1,6 @@
 import { styled } from '@nextui-org/react';
 
-// IconButton component will be available as part of the core library soon
+// กำหนดรูปแบบของปุ่มกดแบบไอคอน
 export const IconButton = styled('button', {
   dflex: 'center',
   border: 'none',

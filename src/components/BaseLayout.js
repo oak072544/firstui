@@ -1,4 +1,5 @@
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar"; 
+//file นี้เป็น base การแบ่งสัดส่วนของหน้าเว็บ
 
 const BaseLayout = ({ children }) => {
   return (

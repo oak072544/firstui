@@ -3,14 +3,17 @@ import { StyledBadge } from "./StyledBadge";
 import { IconButton } from "./IconButton";
 import { FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
 
+//custom ตารางไว้เรียกใช้ 
+
 export default function App() {
+  //กำหนด column หัวตาราง
   const columns = [
     { name: "LOGIN", uid: "login" },
     { name: "NAME", uid: "name" },
     { name: "ROLE", uid: "role" },
     { name: "ACTIONS", uid: "actions" },
   ];
-  const users = [
+  const users = [ //ข้อมูลที่จะใส่ในตาราง
     {
       id: 1,
       login: "TonyR",
@@ -50,10 +53,10 @@ export default function App() {
           <Text size={14}> {cellValue} </Text>
         );
 
-      case "role":
+      case "role": // ดึง badge มาใช้ตาม role ที่กำหนด
         return <StyledBadge type={user.role}>{cellValue}</StyledBadge>;
 
-      case "actions":
+      case "actions": // ปุ่มดูดีเทล แก้ไข ลบ
         return (
           <Row justify="center" align="center">
             <Col css={{ d: "flex" }}>
