@@ -2,10 +2,18 @@ import { Table, Row, Col, Tooltip, User, Text } from "@nextui-org/react";
 import { StyledBadge } from "./StyledBadge";
 import { IconButton } from "./IconButton";
 import { FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
+import React, { useState } from "react";
 
-//custom ตารางไว้เรียกใช้ 
 
-export default function App() {
+export const getServerSideProps = async () => {
+  const res = await fetch('http://localhost:3000/api/getUsers')
+  const users = await res.json()
+  //console.log(users)
+  return { props: { users } }
+}
+
+//custom ตารางไว้เรียกใช้
+export default function App({users}) {
   //กำหนด column หัวตาราง
   const columns = [
     { name: "LOGIN", uid: "login" },
@@ -13,6 +21,9 @@ export default function App() {
     { name: "ROLE", uid: "role" },
     { name: "ACTIONS", uid: "actions" },
   ];
+  //console.log(JSON.stringify(users))
+  
+  /*
   const users = [ //ข้อมูลที่จะใส่ในตาราง
     {
       id: 1,
@@ -45,39 +56,41 @@ export default function App() {
       role: "Staff",
     },
   ];
-  const renderCell = (user, columnKey) => {
-    const cellValue = user[columnKey];
+  */
+/*
+  const renderCell = (users, columnKey) => {
+    const cellValue = users[columnKey];
     switch (columnKey) {
-      case "name":
+      case "displayname":
         return (
           <Text size={14}> {cellValue} </Text>
         );
 
       case "role": // ดึง badge มาใช้ตาม role ที่กำหนด
-        return <StyledBadge type={user.role}>{cellValue}</StyledBadge>;
+        return <StyledBadge type={users.role}>{cellValue}</StyledBadge>;
 
       case "actions": // ปุ่มดูดีเทล แก้ไข ลบ
         return (
           <Row justify="center" align="center">
             <Col css={{ d: "flex" }}>
               <Tooltip content="Details">
-                <IconButton onClick={() => console.log("View user", user.id)}>
+                <IconButton onClick={() => console.log("View users", users._id)}>
                   <FiEye size={18} />
                 </IconButton>
               </Tooltip>
             </Col>
             <Col css={{ d: "flex" }}>
-              <Tooltip content="Edit user">
-                <IconButton onClick={() => console.log("Edit user", user.id)}>
+              <Tooltip content="Edit users">
+                <IconButton onClick={() => console.log("Edit users", users._id)}>
                   <FiEdit size={18} />
                 </IconButton>
               </Tooltip>
             </Col>
             <Col css={{ d: "flex" }}>
               <Tooltip
-                content="Delete user"
+                content="Delete users"
                 color="error"
-                onClick={() => console.log("Delete user", user.id)}
+                onClick={() => console.log("Delete users", users._id)}
               >
                 <IconButton>
                   <FiTrash2 size={18}/>
@@ -122,4 +135,8 @@ export default function App() {
       </Table.Body>
     </Table>
   );
+  */
+return(
+  null
+)
 }

@@ -17,27 +17,27 @@ export const StyledBadge = styled('span', {
   color: '$white',
   variants: {
     type: {
-      Student: {
+      student: {
         bg: '$successLight',
         color: '$successLightContrast'
       },
-      ExchangeStudent: {
+      echange_student: {
         bg: '$errorLight',
         color: '$errorLightContrast'
       },
-      Alumni: {
+      alumni: {
         bg: '$warningLight',
         color: '$warningLightContrast'
       },
-      SpecialTeacher: {
+      templecturer: {
         bg: '$primaryLight',
         color: '$primaryLightContrast'
       },
-      Personnel: {
+      personel: {
         bg: '$secondaryLight',
         color: '$secondaryLightContrast'
       },
-      Retiree: {
+      retirement: {
         bg: '$neutralLight',
         color: '$neutralLightContrast'
       },

@@ -25,10 +25,9 @@ import {
   FiTrash2,
 } from "react-icons/fi";
 
-import React,{useState} from 'react';
+import React, { useState } from "react";
 
 //import { DeleteService } from "./DeleteService..js"; //อันนี้คือไฟล์เด้งเตือนเวลาจะลบ แต่ตอนนี้แตกเพราะมันใส่คำสั่งซ้อนกันไม่ได้ ?
-
 
 type Props = {
   collec: [Service];
@@ -37,11 +36,11 @@ type Props = {
 type Service = {
   _id: string;
   name: string;
-  description : string;
+  description: string;
   image: string;
   role: { [key: string]: boolean }; // Update the type to object with key-value pairs
   link: string;
-  enable : boolean;
+  enable: boolean;
 };
 
 export async function getServerSideProps() {
@@ -207,14 +206,24 @@ export default function serviceManage(props: Props) {
                               <Row style={{ marginBottom: "1rem" }}>
                                 <Row>
                                   <p className="text-md">{service.name}</p>
-                                  <StyledBadge
-                                    type={service.role}
-                                    style={{ marginLeft: "0.5rem" }}
-                                  >
-                                    {" "}
-                                    {/*ตรงนี้ไม่แน่ใจว่า type มันแตกเพราะอะไร แต่รันได้ปกติ*/}
-                                    {service.role}
-                                  </StyledBadge>
+
+
+                                  {Object.keys(service.role).map(
+                                    (role, index) => (
+                                      <>
+                                        {service.role[role] ? (
+                                          <StyledBadge
+                                            type={role}
+                                            style={{ marginLeft: "0.5rem" }}
+                                          >
+                                            {role}{" "}
+                                          </StyledBadge>
+                                        ) : (
+                                          ""
+                                        )}
+                                      </>
+                                    )
+                                  )}
                                 </Row>
 
                                 <Row css={{ display: "flex" }}>
@@ -244,9 +253,7 @@ export default function serviceManage(props: Props) {
                               </Row>
                             </Col>
                             <Row>
-                              <Link href={service.servicelink}>
-                                {service.servicelink}
-                              </Link>
+                              <Link href={service.link}>{service.link}</Link>
                               <Row
                                 css={{
                                   display: "flex",
@@ -254,7 +261,10 @@ export default function serviceManage(props: Props) {
                                   alignContent: "flex-end",
                                 }}
                               >
+                                {/*
                                 <Text size={12}>{service.date}</Text>
+                              */}
+                                <Text size={12}>null</Text>
                               </Row>
                             </Row>
                           </div>

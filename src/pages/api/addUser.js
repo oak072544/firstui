@@ -1,4 +1,4 @@
-import clientPromise from "../../../lib/mongodb";
+import clientPromise from "../../lib/mongodb";
 
 export default async (req, res) => {
   try {
@@ -7,11 +7,13 @@ export default async (req, res) => {
 
     const {
       username,
+      displayname,
       role,
     } = req.body;
 
     const service = await db.collection("user").insertOne({
       username,
+      displayname,
       role,
     });
 

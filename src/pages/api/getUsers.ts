@@ -1,4 +1,3 @@
-import { ObjectId } from 'mongodb';
 import clientPromise from "../../../lib/mongodb";
 import { NextApiResponse, NextApiRequest } from 'next'
 
@@ -9,13 +8,10 @@ export default async function handler (_req: NextApiRequest,
 
         const client = await clientPromise;
         const db = client.db("project");
-        const {role} = _req.query;
 
-        const services = await db.collection("service").find({
-            role : role
-        }).toArray(); //ลบ .limit() ไป
+        const users = await db.collection("user").find({}).toArray(); //ลบ .limit() ไป
 
-        res.status(200).json(services);
+        res.status(200).json(users);
 
     }
     catch (e : any)

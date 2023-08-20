@@ -3,8 +3,17 @@ import BaseLayout from "@/components/BaseLayout";
 import {Container, Card,Row,Button,Text,Input} from "@nextui-org/react";
 import {FiSliders, FiSearch } from "react-icons/fi";
 import TableCustom from "@/components/Tablecustom";
+import React, { useState } from "react";
 
-export default function staffManage() {
+export const getServerSideProps = async () => {
+  const res = await fetch('http://localhost:3000/api/getUsers')
+  const users = await res.json()
+  //console.log(users)
+  return { props: { users } }
+}
+
+export default function staffManage(props) {
+  const [users, setUsers] = useState(props.users);
     return (
         <>
         <Head>
@@ -29,6 +38,7 @@ export default function staffManage() {
                   <Text size={12}>Short by : Name <FiSliders/></Text>
                 </Container>
                 <TableCustom></TableCustom>
+                {users.map((users) => (users.username+"    "+users.displayname))}
               </Card.Body>
             </Card>
           </Container>
