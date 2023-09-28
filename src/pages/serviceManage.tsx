@@ -40,6 +40,8 @@ type Service = {
   image: string;
   role: { [key: string]: boolean }; // Update the type to object with key-value pairs
   link: string;
+  date: string;
+  username: string;
   enable: boolean;
 };
 
@@ -264,7 +266,7 @@ export default function serviceManage(props: Props) {
                                 {/*
                                 <Text size={12}>{service.date}</Text>
                               */}
-                                <Text size={12}>null</Text>
+                                <Text size={12}>{service.username}</Text>
                               </Row>
                             </Row>
                           </div>

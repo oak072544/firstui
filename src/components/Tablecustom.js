@@ -4,16 +4,19 @@ import { IconButton } from "./IconButton";
 import { FiEdit, FiEye, FiTrash2 } from "react-icons/fi";
 import React, { useState } from "react";
 
-
+/*
 export const getServerSideProps = async () => {
   const res = await fetch('http://localhost:3000/api/getUsers')
   const users = await res.json()
-  //console.log(users)
+  console.log(res)
   return { props: { users } }
 }
+*/
+
 
 //custom ตารางไว้เรียกใช้
 export default function App({users}) {
+
   //กำหนด column หัวตาราง
   const columns = [
     { name: "LOGIN", uid: "login" },
@@ -21,7 +24,8 @@ export default function App({users}) {
     { name: "ROLE", uid: "role" },
     { name: "ACTIONS", uid: "actions" },
   ];
-  //console.log(JSON.stringify(users))
+
+  console.log(users)
   
   /*
   const users = [ //ข้อมูลที่จะใส่ในตาราง
@@ -57,86 +61,90 @@ export default function App({users}) {
     },
   ];
   */
-/*
-  const renderCell = (users, columnKey) => {
-    const cellValue = users[columnKey];
-    switch (columnKey) {
-      case "displayname":
-        return (
-          <Text size={14}> {cellValue} </Text>
-        );
-
-      case "role": // ดึง badge มาใช้ตาม role ที่กำหนด
-        return <StyledBadge type={users.role}>{cellValue}</StyledBadge>;
-
-      case "actions": // ปุ่มดูดีเทล แก้ไข ลบ
-        return (
-          <Row justify="center" align="center">
-            <Col css={{ d: "flex" }}>
-              <Tooltip content="Details">
-                <IconButton onClick={() => console.log("View users", users._id)}>
-                  <FiEye size={18} />
-                </IconButton>
-              </Tooltip>
-            </Col>
-            <Col css={{ d: "flex" }}>
-              <Tooltip content="Edit users">
-                <IconButton onClick={() => console.log("Edit users", users._id)}>
-                  <FiEdit size={18} />
-                </IconButton>
-              </Tooltip>
-            </Col>
-            <Col css={{ d: "flex" }}>
-              <Tooltip
-                content="Delete users"
-                color="error"
-                onClick={() => console.log("Delete users", users._id)}
-              >
-                <IconButton>
-                  <FiTrash2 size={18}/>
-                </IconButton>
-              </Tooltip>
-            </Col>
-          </Row>
-        );
-      default:
-        return cellValue;
-    }
-  };
+  
+  /*
+    const renderCell = (users, columnKey) => {
+      const cellValue = users[columnKey];
+      switch (columnKey) {
+        case "displayname":
+          return (
+            <Text size={14}> {cellValue} </Text>
+          );
+  
+        case "role": // ดึง badge มาใช้ตาม role ที่กำหนด
+          return <StyledBadge type={users.role}>{cellValue}</StyledBadge>;
+  
+        case "actions": // ปุ่มดูดีเทล แก้ไข ลบ
+          return (
+            <Row justify="center" align="center">
+              <Col css={{ d: "flex" }}>
+                <Tooltip content="Details">
+                  <IconButton onClick={() => console.log("View users", users._id)}>
+                    <FiEye size={18} />
+                  </IconButton>
+                </Tooltip>
+              </Col>
+              <Col css={{ d: "flex" }}>
+                <Tooltip content="Edit users">
+                  <IconButton onClick={() => console.log("Edit users", users._id)}>
+                    <FiEdit size={18} />
+                  </IconButton>
+                </Tooltip>
+              </Col>
+              <Col css={{ d: "flex" }}>
+                <Tooltip
+                  content="Delete users"
+                  color="error"
+                  onClick={() => console.log("Delete users", users._id)}
+                >
+                  <IconButton>
+                    <FiTrash2 size={18}/>
+                  </IconButton>
+                </Tooltip>
+              </Col>
+            </Row>
+          );
+        default:
+          return cellValue;
+      }
+    };
+    return (
+      <Table
+        aria-label="table with custom cells"
+        css={{
+          height: "auto",
+          minWidth: "100%",
+          backgroundColor: "$white",
+        }}
+        selectionMode="none"
+      >
+        <Table.Header columns={columns}>
+          {(column) => (
+            <Table.Column
+              key={column.uid}
+              hideHeader={column.uid === "actions"}
+              align={column.uid === "actions" ? "center" : "start"}
+            >
+              {column.name}
+            </Table.Column>
+          )}
+        </Table.Header>
+        <Table.Body items={users}>
+          {(item) => (
+            <Table.Row>
+              {(columnKey) => (
+                <Table.Cell>{renderCell(item, columnKey)}</Table.Cell>
+              )}
+            </Table.Row>
+          )}
+        </Table.Body>
+      </Table>
+    );
+    
+   */
+   /*
   return (
-    <Table
-      aria-label="table with custom cells"
-      css={{
-        height: "auto",
-        minWidth: "100%",
-        backgroundColor: "$white",
-      }}
-      selectionMode="none"
-    >
-      <Table.Header columns={columns}>
-        {(column) => (
-          <Table.Column
-            key={column.uid}
-            hideHeader={column.uid === "actions"}
-            align={column.uid === "actions" ? "center" : "start"}
-          >
-            {column.name}
-          </Table.Column>
-        )}
-      </Table.Header>
-      <Table.Body items={users}>
-        {(item) => (
-          <Table.Row>
-            {(columnKey) => (
-              <Table.Cell>{renderCell(item, columnKey)}</Table.Cell>
-            )}
-          </Table.Row>
-        )}
-      </Table.Body>
-    </Table>
-  );
+    null
+  )
   */
-return(
-  null
-)
 }

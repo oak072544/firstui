@@ -37,7 +37,7 @@ export default function staffManage(props) {
                 <Container css={{display:"flex", justifyContent:"flex-end", alignContent:"flex-end"}}>
                   <Text size={12}>Short by : Name <FiSliders/></Text>
                 </Container>
-                <TableCustom></TableCustom>
+                <TableCustom users={users}></TableCustom>
                 {users.map((users) => (users.username+"    "+users.displayname))}
               </Card.Body>
             </Card>
